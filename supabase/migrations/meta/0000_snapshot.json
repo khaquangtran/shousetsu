@@ -1,5 +1,5 @@
 {
-  "id": "537c8e2c-31b1-4c51-bde2-2dc7d07d74a9",
+  "id": "2b27c5cb-4050-4082-a9cc-694595b8dd91",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -31,6 +31,27 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_approved": {
+          "name": "is_approved",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "chapter_status": {
+          "name": "chapter_status",
+          "type": "chapterStatus",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'free'"
         },
         "novel_id": {
           "name": "novel_id",
@@ -133,6 +154,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "views": {
+          "name": "views",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -199,8 +226,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "role": {
-          "name": "role",
+        "user_role": {
+          "name": "user_role",
           "type": "userRoles",
           "typeSchema": "public",
           "primaryKey": false,
@@ -247,6 +274,14 @@
     }
   },
   "enums": {
+    "public.chapterStatus": {
+      "name": "chapterStatus",
+      "schema": "public",
+      "values": [
+        "free",
+        "paid"
+      ]
+    },
     "public.userRoles": {
       "name": "userRoles",
       "schema": "public",

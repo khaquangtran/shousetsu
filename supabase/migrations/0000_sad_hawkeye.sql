@@ -1,9 +1,13 @@
+CREATE TYPE "public"."chapterStatus" AS ENUM('free', 'paid');--> statement-breakpoint
 CREATE TYPE "public"."userRoles" AS ENUM('user', 'admin');--> statement-breakpoint
 CREATE TABLE "chapter" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
 	"slug" text NOT NULL,
 	"chapter_number" integer NOT NULL,
+	"content" text NOT NULL,
+	"is_approved" boolean DEFAULT false NOT NULL,
+	"chapter_status" "chapterStatus" DEFAULT 'free' NOT NULL,
 	"novel_id" integer NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
@@ -14,6 +18,7 @@ CREATE TABLE "novel" (
 	"name" text NOT NULL,
 	"author" text NOT NULL,
 	"slug" text NOT NULL,
+	"views" integer,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
@@ -23,7 +28,7 @@ CREATE TABLE "user" (
 	"username" text NOT NULL,
 	"password" text NOT NULL,
 	"email" text NOT NULL,
-	"role" "userRoles" DEFAULT 'user',
+	"user_role" "userRoles" DEFAULT 'user',
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );

@@ -1,4 +1,5 @@
 import {
+  boolean,
   index,
   integer,
   pgEnum,
@@ -11,6 +12,8 @@ import {
 
 export const userRolesEnum = pgEnum('userRoles', ['user', 'admin'])
 
+export const chapterStatusEnum = pgEnum('chapterStatus', ['free', 'paid'])
+
 export const user = pgTable(
   'user',
   {
@@ -18,7 +21,7 @@ export const user = pgTable(
     username: text('username').notNull(),
     password: text('password').notNull(),
     email: text('email').notNull(),
-    role: userRolesEnum().default('user'),
+    userRole: userRolesEnum('user_role').default('user'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     updatedAt: timestamp('updated_at')
       .notNull()
@@ -34,6 +37,7 @@ export const novel = pgTable(
     name: text('name').notNull(),
     author: text('author').notNull(),
     slug: text('slug').notNull(),
+    views: integer('views'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     updatedAt: timestamp('updated_at')
       .notNull()
@@ -49,6 +53,11 @@ export const chapter = pgTable(
     name: text('name').notNull(),
     slug: text('slug').notNull(),
     chapterNumber: integer('chapter_number').notNull(),
+    content: text('content').notNull(),
+    isApproved: boolean('is_approved').default(false).notNull(),
+    chapterStatus: chapterStatusEnum('chapter_status')
+      .default('free')
+      .notNull(),
     novelId: integer('novel_id')
       .notNull()
       .references(() => novel.id, { onDelete: 'cascade' }),
