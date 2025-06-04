@@ -16,7 +16,7 @@ export default async function Page({
 
   return (
     <>
-      <section className="my-20 pb-20">
+      <section className="mt-20 mb-[10rem]">
         <div className="flex justify-between flex-row">
           <div></div>
           <div>
@@ -26,21 +26,28 @@ export default async function Page({
           <div></div>
         </div>
       </section>
-      <section className="mx-auto max-w-3xl mt-10 px-2 md:px-0">
-        <h2 className="font-semibold font-serif text-2xl tracking-tight text-center uppercase">
-          chapters
-        </h2>
-        <ul className="mt-28 flex flex-col gap-10">
+      <section className="mx-auto max-w-3xl mt-20 mb-[10rem] px-2 md:px-0">
+        <div>
+          <p className="text-xs sm:text-sm md:text-base font-serif text-center">
+            {chapters.length} chapters
+          </p>
+          <h2 className="font-semibold font-serif text-xl sm:text-2xl md:text-4xl tracking-tight text-center uppercase">
+            chapters
+          </h2>
+        </div>
+      </section>
+      <section className="mx-auto max-w-3xl px-2 md:px-0 font-serif">
+        <ul className="flex flex-col gap-10">
           {chapters.map((chapter, i) => (
             <li key={i}>
-              <span className="font-serif italic text-xs md:text-sm">
+              <p className="font-serif text-center text-xs sm:text-sm md:text-base">
                 Chapter {chapter.chapterNumber}
-              </span>
+              </p>
               <Link
                 href={`/novel/${novelSlug}/${chapter.slug}`}
-                className="hover:text-red-700"
+                className="link"
               >
-                <h1 className="font-serif text-lg md:text-xl tracking-tight">
+                <h1 className="font-serif text-lg sm:text-xl md:text-2xl tracking-tight text-center">
                   {chapter.name}
                 </h1>
               </Link>

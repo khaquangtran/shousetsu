@@ -13,7 +13,7 @@ export default async function Page({
 
   return (
     <>
-      <section className="my-20 pb-20">
+      <section className="mt-20 mb-[10rem]">
         <div className="flex justify-between flex-row">
           <div></div>
           <div>
@@ -23,16 +23,18 @@ export default async function Page({
           <div></div>
         </div>
       </section>
-      <section className="mx-auto max-w-3xl mt-10 px-2 md:px-0">
+      <section className="mx-auto max-w-3xl mt-20 mb-[10rem] px-2 md:px-0">
         <div>
-          <p className="text-xs md:text-sm font-serif text-center">
+          <p className="text-xs sm:text-sm md:text-base font-serif text-center">
             Chapter {chapter.chapterNumber}
           </p>
-          <h2 className="font-medium font-serif text-2xl tracking-tight text-center">
+          <h2 className="font-medium font-serif text-xl sm:text-2xl md:text-4xl tracking-tight text-center">
             {chapter.name}
           </h2>
         </div>
-        <div className="font-serif mt-28">{chapter.content}</div>
+      </section>
+      <section className="mx-auto max-w-3xl px-2 md:px-0 font-serif">
+        {chapter.content}
       </section>
     </>
   )
