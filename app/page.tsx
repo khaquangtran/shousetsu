@@ -6,19 +6,28 @@ export default async function Home() {
 
   return (
     <>
+      <section className="my-20 pb-20">
+        <h1 className="font-serif text-center">shōsetsu</h1>
+        <p className="font-serif text-center text-xs">小説</p>
+      </section>
       <section className="mx-auto max-w-3xl mt-10 px-2 md:px-0">
-        <ul className="flex flex-col gap-6 mt-7">
+        <h2 className="font-semibold font-serif text-2xl tracking-tight text-center uppercase">
+          Works in Progress
+        </h2>
+        <ul className="mt-28 flex flex-col gap-10">
           {novels.map((novel, i) => (
             <li key={i}>
-              <p className="font-eb-garamond italic">{novel.author}</p>
               <Link
                 href={`/novel/${novel.slug}`}
-                className="hover:text-red-600"
+                className="hover:text-red-700"
               >
-                <span className="font-eb-garamond font-bold text-3xl tracking-tighter">
+                <h1 className="font-serif text-lg md:text-xl tracking-tight text-center">
                   {novel.name}
-                </span>
+                </h1>
               </Link>
+              <p className="font-serif text-center text-xs md:text-sm">
+                {novel.author}
+              </p>
             </li>
           ))}
         </ul>
