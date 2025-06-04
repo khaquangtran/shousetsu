@@ -1,3 +1,4 @@
+CREATE TYPE "public"."userRoles" AS ENUM('user', 'admin');--> statement-breakpoint
 CREATE TABLE "chapter" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
@@ -22,6 +23,7 @@ CREATE TABLE "user" (
 	"username" text NOT NULL,
 	"password" text NOT NULL,
 	"email" text NOT NULL,
+	"role" "userRoles" DEFAULT 'user',
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
