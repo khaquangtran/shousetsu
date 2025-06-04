@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+    --light-background: #fffff8;
+    --light-foreground: #000000;
     --background: #ffffff;
     --foreground: #171717;
 }
@@ -11,6 +13,7 @@
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
     --font-eb-garamond: var(--font-eb-garamond);
+    --font-serif: var(--font-eb-garamond);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +26,8 @@
 body {
     /*    background: var(--background);
         color: var(--foreground);*/
+    background: var(--light-background);
+    color: var(--light-foreground);
 }
 
 ul {
