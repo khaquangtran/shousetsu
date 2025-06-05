@@ -10,11 +10,11 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core'
 
-export const userRolesEnum = pgEnum('userRoles', ['user', 'admin'])
+// export const userRolesEnum = pgEnum('userRoles', ['user', 'admin'])
 
 export const chapterStatusEnum = pgEnum('chapterStatus', ['free', 'paid'])
 
-export const user = pgTable(
+/*export const user = pgTable(
   'user',
   {
     id: serial('id').primaryKey(),
@@ -28,7 +28,7 @@ export const user = pgTable(
       .$onUpdate(() => new Date()),
   },
   (table) => [uniqueIndex('user_username_idx').on(table.username)]
-)
+)*/
 
 export const novel = pgTable(
   'novel',
@@ -37,7 +37,7 @@ export const novel = pgTable(
     name: text('name').notNull(),
     author: text('author').notNull(),
     slug: text('slug').notNull(),
-    views: integer('views'),
+    views: integer('views').default(0),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     updatedAt: timestamp('updated_at')
       .notNull()
@@ -72,8 +72,10 @@ export const chapter = pgTable(
   ]
 )
 
+/*
 export type InsertUser = typeof user.$inferInsert
 export type SelectUser = typeof user.$inferSelect
+*/
 
 export type InsertNovel = typeof novel.$inferInsert
 export type SelectNovel = typeof novel.$inferSelect

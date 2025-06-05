@@ -1,4 +1,5 @@
 import { getChapterBySlug, getNovelBySlug } from '@/app/utils/db/queries/select'
+import MdxComponent from '@/app/(user)/_components/_markdoc/MdxComponent'
 
 export default async function Page({
   params,
@@ -8,7 +9,6 @@ export default async function Page({
   const { novelSlug, chapterSlug } = await params
 
   const novel = (await getNovelBySlug(novelSlug))[0] ?? null
-
   const chapter = (await getChapterBySlug(novel.id, chapterSlug))[0]
 
   return (
@@ -33,8 +33,8 @@ export default async function Page({
           </h2>
         </div>
       </section>
-      <section className="mx-auto max-w-3xl px-2 md:px-0 font-serif">
-        {chapter.content}
+      <section className="mx-auto max-w-3xl px-2 md:px-0 font-serif text-base sm:text-lg md:text-xl">
+        <MdxComponent source={chapter.content} />
       </section>
     </>
   )
