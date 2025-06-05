@@ -13,8 +13,11 @@
     "supabase:stop": "pnpx supabase stop"
   },
   "dependencies": {
+    "contentlayer": "^0.3.4",
     "drizzle-orm": "^0.44.2",
     "next": "15.3.3",
+    "next-contentlayer": "^0.3.4",
+    "next-mdx-remote-client": "^2.1.2",
     "postgres": "^3.4.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

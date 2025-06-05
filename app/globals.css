@@ -24,15 +24,15 @@
 }
 
 body {
-
-    /*    background: var(--light-background);
-        color: var(--light-foreground);*/
-    @apply dark:bg-[#1E1E1E] dark:text-[#E0E0E0];
+    background: var(--light-background);
+    color: var(--light-foreground);
+    /*@apply dark:bg-[#121414] dark:text-[#d4d1cb];*/
 }
 
 @layer components {
     .link {
-        @apply hover:dark:text-yellow-400;
+        @apply hover:text-red-700;
+        /*@apply hover:text-yellow-900 hover:dark:text-yellow-400;*/
     }
 }
 
